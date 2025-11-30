@@ -1,0 +1,209 @@
+#ifndef NW_SND_GLOBAL_H_
+#define NW_SND_GLOBAL_H_
+
+#include <nw/types.h>
+
+#ifndef static_assert
+    // https://stackoverflow.com/a/1597129
+    #define TOKENPASTE(x, y) x ## y
+    #define TOKENPASTE2(x, y) TOKENPASTE(x, y)
+
+    #define static_assert(condition, ...) typedef int TOKENPASTE2(static_assert_, __LINE__)[(condition) ? 1 : -1]
+#endif // static_assert
+
+#ifdef NW_PLATFORM_CAFE
+  #include <cafe/pad.h>   // PAD_MAX_CONTROLLERS
+#else
+  #define PAD_MAX_CONTROLLERS      4
+#endif
+
+namespace nw { namespace snd {
+
+static const int DRC_OUT_COUNT = 1;
+
+enum OutputDevice
+{
+    OUTPUT_DEVICE_MAIN,
+    OUTPUT_DEVICE_DRC,
+    OUTPUT_DEVICE_COUNT
+};
+
+enum OutputLine
+{
+    OUTPUT_LINE_MAIN         = 1 << 0,
+    OUTPUT_LINE_REMOTE0      = 1 << 1,
+    OUTPUT_LINE_REMOTE1      = 1 << 2,
+    OUTPUT_LINE_REMOTE2      = 1 << 3,
+    OUTPUT_LINE_REMOTE3      = 1 << 4,
+    OUTPUT_LINE_DRC          = 1 << 5
+};
+
+enum AuxBus
+{
+    AUX_BUS_A,
+    AUX_BUS_B,
+    AUX_BUS_C,
+    AUX_BUS_NUM
+};
+
+static const u32 SEQ_BANK_MAX = 4;
+
+enum PanMode
+{
+    PAN_MODE_DUAL,
+    PAN_MODE_BALANCE,
+    PAN_MODE_INVALID
+};
+
+enum PanCurve
+{
+    PAN_CURVE_SQRT,
+    PAN_CURVE_SQRT_0DB,
+    PAN_CURVE_SQRT_0DB_CLAMP,
+    PAN_CURVE_SINCOS,
+    PAN_CURVE_SINCOS_0DB,
+    PAN_CURVE_SINCOS_0DB_CLAMP,
+    PAN_CURVE_LINEAR,
+    PAN_CURVE_LINEAR_0DB,
+    PAN_CURVE_LINEAR_0DB_CLAMP,
+    PAN_CURVE_INVALID
+};
+
+enum WaveType
+{
+    WAVE_TYPE_NWWAV,
+    WAVE_TYPE_DSPADPCM,
+    WAVE_TYPE_INVALID = -1
+};
+
+enum BiquadFilterType
+{
+    BIQUAD_FILTER_TYPE_INHERIT = 0,
+    BIQUAD_FILTER_TYPE_LPF     = 1,
+    BIQUAD_FILTER_TYPE_HPF     = 2,
+    BIQUAD_FILTER_TYPE_BPF512  = 3,
+    BIQUAD_FILTER_TYPE_BPF1024 = 4,
+    BIQUAD_FILTER_TYPE_BPF2048 = 5,
+
+    BIQUAD_FILTER_TYPE_USER_MIN = 64,
+
+    BIQUAD_FILTER_TYPE_USER_0 = BIQUAD_FILTER_TYPE_USER_MIN,
+    BIQUAD_FILTER_TYPE_USER_1,
+    BIQUAD_FILTER_TYPE_USER_2,
+    BIQUAD_FILTER_TYPE_USER_3,
+    BIQUAD_FILTER_TYPE_USER_4,
+    BIQUAD_FILTER_TYPE_USER_5,
+    BIQUAD_FILTER_TYPE_USER_6,
+    BIQUAD_FILTER_TYPE_USER_7,
+    BIQUAD_FILTER_TYPE_USER_8,
+    BIQUAD_FILTER_TYPE_USER_9,
+    BIQUAD_FILTER_TYPE_USER_10,
+    BIQUAD_FILTER_TYPE_USER_11,
+    BIQUAD_FILTER_TYPE_USER_12,
+    BIQUAD_FILTER_TYPE_USER_13,
+    BIQUAD_FILTER_TYPE_USER_14,
+    BIQUAD_FILTER_TYPE_USER_15,
+    BIQUAD_FILTER_TYPE_USER_16,
+    BIQUAD_FILTER_TYPE_USER_17,
+    BIQUAD_FILTER_TYPE_USER_18,
+    BIQUAD_FILTER_TYPE_USER_19,
+    BIQUAD_FILTER_TYPE_USER_20,
+    BIQUAD_FILTER_TYPE_USER_21,
+    BIQUAD_FILTER_TYPE_USER_22,
+    BIQUAD_FILTER_TYPE_USER_23,
+    BIQUAD_FILTER_TYPE_USER_24,
+    BIQUAD_FILTER_TYPE_USER_25,
+    BIQUAD_FILTER_TYPE_USER_26,
+    BIQUAD_FILTER_TYPE_USER_27,
+    BIQUAD_FILTER_TYPE_USER_28,
+    BIQUAD_FILTER_TYPE_USER_29,
+    BIQUAD_FILTER_TYPE_USER_30,
+    BIQUAD_FILTER_TYPE_USER_31,
+    BIQUAD_FILTER_TYPE_USER_32,
+    BIQUAD_FILTER_TYPE_USER_33,
+    BIQUAD_FILTER_TYPE_USER_34,
+    BIQUAD_FILTER_TYPE_USER_35,
+    BIQUAD_FILTER_TYPE_USER_36,
+    BIQUAD_FILTER_TYPE_USER_37,
+    BIQUAD_FILTER_TYPE_USER_38,
+    BIQUAD_FILTER_TYPE_USER_39,
+    BIQUAD_FILTER_TYPE_USER_40,
+    BIQUAD_FILTER_TYPE_USER_41,
+    BIQUAD_FILTER_TYPE_USER_42,
+    BIQUAD_FILTER_TYPE_USER_43,
+    BIQUAD_FILTER_TYPE_USER_44,
+    BIQUAD_FILTER_TYPE_USER_45,
+    BIQUAD_FILTER_TYPE_USER_46,
+    BIQUAD_FILTER_TYPE_USER_47,
+    BIQUAD_FILTER_TYPE_USER_48,
+    BIQUAD_FILTER_TYPE_USER_49,
+    BIQUAD_FILTER_TYPE_USER_50,
+    BIQUAD_FILTER_TYPE_USER_51,
+    BIQUAD_FILTER_TYPE_USER_52,
+    BIQUAD_FILTER_TYPE_USER_53,
+    BIQUAD_FILTER_TYPE_USER_54,
+    BIQUAD_FILTER_TYPE_USER_55,
+    BIQUAD_FILTER_TYPE_USER_56,
+    BIQUAD_FILTER_TYPE_USER_57,
+    BIQUAD_FILTER_TYPE_USER_58,
+    BIQUAD_FILTER_TYPE_USER_59,
+    BIQUAD_FILTER_TYPE_USER_60,
+    BIQUAD_FILTER_TYPE_USER_61,
+    BIQUAD_FILTER_TYPE_USER_62,
+    BIQUAD_FILTER_TYPE_USER_63,
+
+    BIQUAD_FILTER_TYPE_USER_MAX = BIQUAD_FILTER_TYPE_USER_63,
+
+    BIQUAD_FILTER_TYPE_MIN = BIQUAD_FILTER_TYPE_INHERIT,
+    BIQUAD_FILTER_TYPE_MAX = BIQUAD_FILTER_TYPE_USER_MAX
+};
+
+static const int REMOTE_OUT_COUNT = PAD_MAX_CONTROLLERS;
+
+enum VoiceRendererType
+{
+    VOICE_RENDERER_SDK,
+    VOICE_RENDERER_SDK_DSP,
+    VOICE_RENDERER_SDK_PPC,
+    VOICE_RENDERER_NW,
+    VOICE_RENDERER_COUNT
+};
+
+struct OutputParam
+{
+    f32 volume;
+    f32 pan;
+    f32 span;
+    f32 mainSend;
+    f32 fxSend[AUX_BUS_NUM];
+
+    void Initialize()
+    {
+        volume = 1.0f;
+        pan = 0.0f;
+        span = 0.0f;
+        mainSend = 0.0f;
+        for (int i = 0; i < AUX_BUS_NUM; i++)
+            fxSend[i] = 0.0f;
+    };
+};
+static_assert(sizeof(OutputParam) == 0x1C);
+
+struct RemoteOutputParam
+{
+    f32 volume;
+    f32 mainSend;
+    f32 fxSend;
+
+    void Initialize()
+    {
+        volume = 1.0f;
+        mainSend = 0.0f;
+        fxSend = 0.0f;
+    }
+};
+static_assert(sizeof(RemoteOutputParam) == 0xC);
+
+} } // namespace nw::snd
+
+#endif // NW_SND_GLOBAL_H_
