@@ -3,14 +3,6 @@
 
 #include <nw/types.h>
 
-#ifndef static_assert
-    // https://stackoverflow.com/a/1597129
-    #define TOKENPASTE(x, y) x ## y
-    #define TOKENPASTE2(x, y) TOKENPASTE(x, y)
-
-    #define static_assert(condition, ...) typedef int TOKENPASTE2(static_assert_, __LINE__)[(condition) ? 1 : -1]
-#endif // static_assert
-
 #ifdef NW_PLATFORM_CAFE
   #include <cafe/pad.h>   // PAD_MAX_CONTROLLERS
 #else
