@@ -13,6 +13,7 @@
 #include <nw/snd/snd_SoundActor.h>
 #include <nw/snd/snd_SoundArchive.h>
 #include <nw/snd/snd_SoundArchivePlayer.h>
+#include <nw/snd/snd_SoundDataManager.h>
 #include <nw/snd/snd_SoundHandle.h>
 #include <nw/snd/snd_SoundInstanceManager.h>
 #include <nw/snd/snd_SoundStartable.h>
