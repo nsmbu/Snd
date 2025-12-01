@@ -46,6 +46,7 @@ enum AuxBus
     AUX_BUS_NUM
 };
 
+static const u32 WAVE_CHANNEL_MAX = 2;
 static const u32 SEQ_BANK_MAX = 4;
 
 enum PanMode
