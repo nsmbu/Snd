@@ -22,5 +22,4 @@ static_assert(sizeof(SequenceTrackAllocator) == 4);
 
 } } } } // namespace nw::snd::internal::driver
 
-
 #endif // NW_SND_SEQUENCE_TRACK_ALLOCATOR_H_

@@ -16,5 +16,4 @@ static_assert(sizeof(SoundMemoryAllocatable) == 4);
 
 } } // namespace nw::snd
 
-
 #endif // NW_SND_SOUND_MEMORY_ALLOCATABLE_H_

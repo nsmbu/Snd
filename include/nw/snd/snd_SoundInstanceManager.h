@@ -32,5 +32,4 @@ private:
 
 } } } // namespace nw::snd::internal
 
-
 #endif // NW_SND_SOUND_INSTANCE_MANAGER_H_
