@@ -15,7 +15,9 @@
 #include <nw/snd/snd_SoundArchivePlayer.h>
 #include <nw/snd/snd_SoundDataManager.h>
 #include <nw/snd/snd_SoundHandle.h>
+#include <nw/snd/snd_SoundHeap.h>
 #include <nw/snd/snd_SoundInstanceManager.h>
+#include <nw/snd/snd_SoundMemoryAllocatable.h>
 #include <nw/snd/snd_SoundStartable.h>
 #include <nw/snd/snd_StreamSound.h>
 #include <nw/snd/snd_Util.h>
