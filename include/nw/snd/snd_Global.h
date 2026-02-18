@@ -178,7 +178,7 @@ struct OutputParam
         mainSend = 0.0f;
         for (int i = 0; i < AUX_BUS_NUM; i++)
             fxSend[i] = 0.0f;
-    };
+    }
 };
 static_assert(sizeof(OutputParam) == 0x1C);
 

@@ -18,7 +18,7 @@ public:
 
     SoundActor(SoundArchivePlayer& soundArchivePlayer);
     SoundActor();
-    virtual ~SoundActor();
+    ~SoundActor() override;
 
     void Initialize(SoundArchivePlayer& soundArchivePlayer);
     void Finalize();
@@ -133,13 +133,13 @@ public:
     );
 
 private:
-    virtual SoundStartable::StartResult detail_SetupSound(
+    SoundStartable::StartResult detail_SetupSound(
         SoundHandle* handle,
         u32 soundId,
         bool holdFlag,
         const SoundStartable::StartInfo* startInfo
-    );
-    virtual SoundArchive::ItemId detail_GetItemId(const char* pString);
+    ) override;
+    SoundArchive::ItemId detail_GetItemId(const char* pString) override;
 
     struct SetupInfo
     {

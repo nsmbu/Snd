@@ -98,7 +98,7 @@ public:
                 : seqDataAddress(NULL)
                 , startLocationLabel(NULL)
             {
-                for (int i = 0; i < SoundArchive::SEQ_BANK_MAX; i++)
+                for (unsigned int i = 0; i < SoundArchive::SEQ_BANK_MAX; i++)
                     bankIds[i] = SoundArchive::INVALID_ID;
             }
         };

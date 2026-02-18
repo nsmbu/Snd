@@ -42,7 +42,7 @@ public:
             return m_Target;
 
         return static_cast<ValueType>(
-            m_Origin + (m_Target - m_Origin) * m_Counter / m_Frame
+            m_Origin + (m_Target - m_Origin) * ValueType(m_Counter) / ValueType(m_Frame)
         );
     }
 
