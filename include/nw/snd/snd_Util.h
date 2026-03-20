@@ -22,7 +22,7 @@ public:
 
     static NW_INLINE u32 GetMaskedItemId(u32 id, internal::ItemType type)
     {
-        return id | (type << 24);
+        return id | (static_cast<u32>(type) << 24);
     }
 };
 
