@@ -2,7 +2,7 @@
 #define NW_SND_UTIL_H_
 
 #include <nw/types.h>
-
+#include <nw/ut/ut_BinaryFileFormat.h>
 #include <nw/snd/snd_ItemType.h>
 
 namespace nw { namespace snd { namespace internal {
