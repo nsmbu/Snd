@@ -109,7 +109,7 @@ public:
         void Initialize()
         {
             seq = NULL;
-            for (int i = 0; i < SoundArchive::SEQ_BANK_MAX; i++)
+            for (u32 i = 0; i < SoundArchive::SEQ_BANK_MAX; i++)
             {
                 banks[i] = NULL;
                 warcs[i] = NULL;
@@ -123,9 +123,9 @@ public:
 
     bool RegisterDataLoadTask(const LoadInfo& loadInfo, const StartInfo& startInfo);
 
-    virtual void Initialize();
-    virtual void Finalize();
-    virtual bool IsPrepared() const { return m_PreparedFlag; }
+    void Initialize() override;
+    void Finalize() override;
+    bool IsPrepared() const override { return m_PreparedFlag; }
 
     void SetTempoRatio(f32 tempoRatio);
     void SetChannelPriority(int priority);
@@ -173,13 +173,13 @@ public:
     void WriteTrackVariable(int trackNo, int varNo, s16 var);
 
 protected:
-    virtual bool IsAttachedTempSpecialHandle();
-    virtual void DetachTempSpecialHandle();
+    bool IsAttachedTempSpecialHandle() override;
+    void DetachTempSpecialHandle() override;
 
-    virtual driver::BasicSoundPlayer* GetBasicSoundPlayerHandle() { return &m_SequenceSoundPlayerInstance; }
+    driver::BasicSoundPlayer* GetBasicSoundPlayerHandle() override { return &m_SequenceSoundPlayerInstance; }
 
-    virtual void OnUpdatePlayerPriority();
-    virtual void OnUpdate() { CheckLoadState(); }
+    void OnUpdatePlayerPriority() override;
+    void OnUpdate() override { CheckLoadState(); }
 
 private:
     void Skip(driver::SequenceSoundPlayer::OffsetType offsetType, int offset);
