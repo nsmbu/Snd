@@ -152,6 +152,8 @@ public:
     {
         return internal::Util::GetMaskedItemId(index, internal::ItemType_Group);
     }
+
+    u32 GetSoundUserParam(ItemId soundId) const;
 };
 
 } }
